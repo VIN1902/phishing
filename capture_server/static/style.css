@@ -1,0 +1,46 @@
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial;
+  background: #f6f8fa;
+  color: #111;
+}
+
+.container {
+  max-width: 400px;
+  margin: 6rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+label {
+  display: block;
+  margin: 0.75rem 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff69b4;
+}
+
+.muted {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 1rem;
+}

